@@ -3,11 +3,10 @@ const bodyParser = require('body-parser');
 const { Helper } = require("./helper");
 const { parse } = require("url");
 const { readFileSync, existsSync } = require("fs");
+const sites = require("./sites.json");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-let sites = {"searxng.localhost": 8080, "localhost": "/home/sam/wow"};
 
 async function handler(req, res) {
   let site = sites[req.hostname];
